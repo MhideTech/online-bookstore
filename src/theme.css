@@ -1,0 +1,43 @@
+/* theme.css */
+:root {
+  --primary-color-light: #F1EEE3;
+  --secondary-color-light: #272A34;
+  --accent-color-light: #FDFBF7;
+
+  --primary-color-dark: #272A34;
+  --secondary-color-dark: #FDFBF7;
+  --accent-color-dark: #3c3e47;
+}
+
+[data-theme="light"] {
+  --primary-color: var(--primary-color-light);
+  --secondary-color: var(--secondary-color-light);
+  --accent-color: var(--accent-color-light);
+}
+
+[data-theme="dark"] {
+  --primary-color: var(--primary-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --accent-color: var(--accent-color-dark);
+}
+
+@layer utilities {
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+  .text-primary {
+    color: var(--primary-color);
+  }
+  .bg-secondary {
+    background-color: var(--secondary-color);
+  }
+  .text-secondary {
+    color: var(--secondary-color);
+  }
+  .bg-accent {
+    background-color: var(--accent-color);
+  }
+  .text-accent {
+    color: var(--accent-color);
+  }
+}
