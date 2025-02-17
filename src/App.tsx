@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "./ui/Navbar";
 import Home from "./pages/Home";
-import CardCarousel from "./ui/Card";
+// import CardCarousel from "./ui/Card";
 
 export default function App() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -15,7 +15,7 @@ export default function App() {
   };
 
   return (
-    <div>
+    <div className="bg-primary">
       <Navbar />
 
       <br /><br /><br />
@@ -27,7 +27,7 @@ export default function App() {
         Toggle {theme === "light" ? "Dark" : "Light"} Mode
       </button>
 
-      <CardCarousel />
+      {/* <CardCarousel /> */}
       
     </div>
   );
