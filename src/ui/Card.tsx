@@ -9,77 +9,71 @@ const cards = [
   },
   { title: "You", image: "src/assets/Screenshot2.png" },
   { title: "Bridgerton", image: "src/assets/Screenshot3.png" },
-  { title: "The Morning Show", image: "/images/the-morning-show.jpg" },
-  { title: "Emily in Paris", image: "/images/emily-in-paris.jpg" },
+  // { title: "The Morning Show", image: "/images/the-morning-show.jpg" },
+  // { title: "Emily in Paris", image: "/images/emily-in-paris.jpg" },
 ];
 
 const CardCarousel = () => {
   const [index, setIndex] = useState(0);
-  const totalCards = cards.length;
-  const angleStep = 360 / totalCards; // Spread cards evenly in a circle
 
   const nextCard = () => {
-    setIndex((prev) => (prev + 1) % totalCards);
+    setIndex((prev) => (prev - 1 + cards.length) % cards.length);
   };
 
   const prevCard = () => {
-    setIndex((prev) => (prev - 1 + totalCards) % totalCards);
+    setIndex((prev) => (prev + 1) % cards.length);
   };
 
   return (
-    <div className="relative flex items-center justify-center h-[600px] w-full">
-      {/* Previous Button */}
-      <button
-        onClick={prevCard}
-        className="absolute left-10 z-20 p-3 bg-white/50 rounded-full shadow-lg"
-      >
-        ◀
-      </button>
+    <div className="flex flex-col gap-10 py-20">
+      <h1 className="text-6xl font-piedra font-bold text-center">
+        Find the perfect book for you
+      </h1>
+      <div className="relative flex items-center justify-center ">
+        {/* Left Button */}
+        <button
+          onClick={prevCard}
+          className="absolute left-5 p-2 bg-white/50 rounded-full shadow-lg"
+        >
+          ◀
+        </button>
 
-      {/* Carousel Container with Full Circular Spread */}
-      <div className="relative w-full h-[600px] flex items-center justify-center">
-        <AnimatePresence>
-          {cards.map((card, i) => {
-            const angle = (i - index) * angleStep;
-            const radians = (angle * Math.PI) / 180;
+        <div className="relative w-[800px] h-[400px] flex items-center justify-center ">
+          <AnimatePresence>
+            {cards.map((card, i) => {
+              const isActive = i === index;
+              const isLeft = (i - index + cards.length) % cards.length === 1;
+              const isRight = (index - i + cards.length) % cards.length === 1;
 
-            // Circular position calculations
-            const x = Math.sin(radians) * 400; // Adjust radius for more spread
-            const z = Math.cos(radians) * 400; // Move cards back and forth
-            const scale = z > 0 ? 1 : 0.8; // Reduce size of back cards
-            const opacity = z > 0 ? 1 : 0.5; // Dim back cards
-            const rotationY = `${-angle}deg`; // Rotate to face the front
+              return (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{
+                    opacity: isActive ? 1 : 0.5,
+                    scale: isActive ? 1 : 0.8,
+                    x: isLeft ? -150 : isRight ? 150 : 0,
+                    zIndex: isActive ? 10 : 5,
+                  }}
+                  transition={{ duration: 0.5 }}
+                  className={`absolute w-[280px] h-[380px] bg-cover bg-center rounded-xl shadow-xl ${
+                    isActive ? "scale-100" : "scale-90 opacity-50"
+                  }`}
+                  style={{ backgroundImage: `url(${card.image})` }}
+                ></motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
 
-            return (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity,
-                  scale,
-                  rotateY: rotationY,
-                  x,
-                  zIndex: z > 0 ? 10 : 5,
-                }}
-                transition={{ duration: 0.6 }}
-                className="absolute w-[200px] h-[300px] bg-cover bg-center rounded-xl shadow-xl"
-                style={{
-                  backgroundImage: `url(${card.image})`,
-                  transformOrigin: "center",
-                }}
-              ></motion.div>
-            );
-          })}
-        </AnimatePresence>
+        {/* Right Button */}
+        <button
+          onClick={nextCard}
+          className="absolute right-5 p-2 bg-white/50 rounded-full shadow-lg"
+        >
+          ▶
+        </button>
       </div>
-
-      {/* Next Button */}
-      <button
-        onClick={nextCard}
-        className="absolute right-10 z-20 p-3 bg-white/50 rounded-full shadow-lg"
-      >
-        ▶
-      </button>
     </div>
   );
 };

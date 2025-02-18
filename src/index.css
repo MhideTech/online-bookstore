@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import './theme.css';
 @tailwind utilities;
 
 *{
-    font-family: "Faculty Glyphic", serif;
+    /* font-family: "Faculty Glyphic", 'serif'; */
 }
 
-body{
-    
-}
+/* h1{
+    font-family: "Piedra", 'serif';
+} */

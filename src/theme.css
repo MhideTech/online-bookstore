@@ -1,12 +1,14 @@
-/* theme.css */
 :root {
-  --primary-color-light: #F1EEE3;
-  --secondary-color-light: #272A34;
-  --accent-color-light: #FDFBF7;
+  --primary-color-light: #f1eee3;
+  --secondary-color-light: #272a34;
+  --accent-color-light: #fdfbf7;
 
-  --primary-color-dark: #272A34;
-  --secondary-color-dark: #FDFBF7;
+  --primary-color-dark: #272a34;
+  --secondary-color-dark: #fdfbf7;
   --accent-color-dark: #3c3e47;
+
+  --font-faculty: "Faculty Glyphic", sans-serif;
+  --font-piedra: "Montserrat", serif;
 }
 
 [data-theme="light"] {
@@ -39,5 +41,13 @@
   }
   .text-accent {
     color: var(--accent-color);
+  }
+
+  .font-faculty {
+    font-family: var(--font-faculty);
+  }
+
+  .font-piedra {
+    font-family: var(--font-piedra);
   }
 }

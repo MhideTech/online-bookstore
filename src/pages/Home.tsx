@@ -9,7 +9,7 @@ export default function Home() {
     };
   return (
     <div>
-      <div className="w-10/12 mx-auto bg-primary py-16 px-12">
+      <div className="w-10/12 mx-auto bg-accent py-16 px-12">
         <div className="flex justify-between gap-20 my-10">
           <h1 className="shrink-0 text-3xl">
             About <br />
@@ -24,9 +24,9 @@ export default function Home() {
             possimus consequatur nisi impedit provident earum.
           </p>
         </div>
-        <div className="bg-accent p-8 grid grid-cols-3 justify-between rounded-md">
+        <div className="bg-primary p-8 grid grid-cols-3 justify-between rounded-md">
           <div></div>
-          <div className="col-span-2 bg-primary py-20 px-12 rounded-md">
+          <div className="col-span-2 bg-secondary border-secondary py-20 px-12 rounded-md">
             <div className="flex">
               <h1 className="text-3xl">
                 The <br /> Redar's Library
