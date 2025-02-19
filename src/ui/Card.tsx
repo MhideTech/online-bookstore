@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const cards = [
@@ -16,29 +16,21 @@ const cards = [
 const CardCarousel = () => {
   const [index, setIndex] = useState(0);
 
-  const nextCard = () => {
-    setIndex((prev) => (prev - 1 + cards.length) % cards.length);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev - 1 + cards.length) % cards.length);
+    }, 3000);
 
-  const prevCard = () => {
-    setIndex((prev) => (prev + 1) % cards.length);
-  };
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex flex-col gap-10 py-20">
       <h1 className="text-6xl font-piedra font-bold text-center">
-        Find the perfect book for you
+        Find the perfect book for <br /> your leisure time
       </h1>
-      <div className="relative flex items-center justify-center ">
-        {/* Left Button */}
-        <button
-          onClick={prevCard}
-          className="absolute left-5 p-2 bg-white/50 rounded-full shadow-lg"
-        >
-          ◀
-        </button>
-
-        <div className="relative w-[800px] h-[400px] flex items-center justify-center ">
+      <div className="relative flex items-center justify-center">
+        <div className="relative w-[800px] h-[400px] flex items-center justify-center">
           <AnimatePresence>
             {cards.map((card, i) => {
               const isActive = i === index;
@@ -54,6 +46,7 @@ const CardCarousel = () => {
                     scale: isActive ? 1 : 0.8,
                     x: isLeft ? -150 : isRight ? 150 : 0,
                     zIndex: isActive ? 10 : 5,
+                    rotate: isLeft ? -20 : isRight ? 20 : 0,
                   }}
                   transition={{ duration: 0.5 }}
                   className={`absolute w-[280px] h-[380px] bg-cover bg-center rounded-xl shadow-xl ${
@@ -65,14 +58,6 @@ const CardCarousel = () => {
             })}
           </AnimatePresence>
         </div>
-
-        {/* Right Button */}
-        <button
-          onClick={nextCard}
-          className="absolute right-5 p-2 bg-white/50 rounded-full shadow-lg"
-        >
-          ▶
-        </button>
       </div>
     </div>
   );

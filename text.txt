@@ -1,0 +1,7 @@
+const nextCard = () => {
+    setIndex((prev) => (prev - 1 + cards.length) % cards.length);
+  };
+
+  const prevCard = () => {
+    setIndex((prev) => (prev + 1) % cards.length);
+  };
