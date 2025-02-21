@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Navbar from "./Navbar";
 
 const cards = [
   {
@@ -25,12 +26,13 @@ const CardCarousel = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-10 py-20">
+    <div className="flex flex-col gap-10 h-screen overflow-hidden">
+      <Navbar />
       <h1 className="text-6xl font-piedra font-bold text-center">
         Find the perfect book for <br /> your leisure time
       </h1>
       <div className="relative flex items-center justify-center">
-        <div className="relative w-[800px] h-[400px] flex items-center justify-center">
+        <div className="relative w-[800px] h-[400px] flex items-center justify-center mt-20">
           <AnimatePresence>
             {cards.map((card, i) => {
               const isActive = i === index;
@@ -49,7 +51,7 @@ const CardCarousel = () => {
                     rotate: isLeft ? -20 : isRight ? 20 : 0,
                   }}
                   transition={{ duration: 0.5 }}
-                  className={`absolute w-[280px] h-[380px] bg-cover bg-center rounded-xl shadow-xl ${
+                  className={`absolute w-[280px] h-[480px] bg-cover bg-center rounded-xl shadow-xl ${
                     isActive ? "scale-100" : "scale-90 opacity-50"
                   }`}
                   style={{ backgroundImage: `url(${card.image})` }}
