@@ -1,14 +1,17 @@
+import CardCarousel from "../ui/Card";
+
 export default function Home() {
-    const icons = {
-      children: "👶",
-      history: "📚",
-      fiction: "🤖",
-      thriller: "👻",
-      romance: "❤️",
-      comics: "💥",
-    };
+  const icons = {
+    children: "👶",
+    history: "📚",
+    fiction: "🤖",
+    thriller: "👻",
+    romance: "❤️",
+    comics: "💥",
+  };
   return (
     <div>
+      <CardCarousel />
       <div className="w-10/12 mx-auto bg-accent py-16 px-12">
         <div className="flex justify-between gap-20 my-10">
           <h1 className="shrink-0 text-3xl">
@@ -49,6 +52,45 @@ export default function Home() {
               </span>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="w-10/12 mx-auto py-20">
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-bold mb-4">What's inside the book</h2>
+            <p className="text-gray-600 mb-6">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              tincidunt arcu...
+            </p>
+            <ul className="space-y-2 grid grid-cols-2">
+              <li className="flex items-center">
+                <span className="mr-2">📚</span> Design Principles
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2">📕</span> UI Design
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2">📙</span> Typography
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2">📘</span> White Space
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2">📗</span> Usability
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2">📓</span> Color Theory
+              </li>
+            </ul>
+          </div>
+          <div className="md:w-1/2 mt-6 md:mt-0 flex justify-center">
+            <img
+              src="path/to/illustration.png"
+              alt="Illustration"
+              className="w-64 h-64"
+            />
+          </div>
         </div>
       </div>
     </div>
