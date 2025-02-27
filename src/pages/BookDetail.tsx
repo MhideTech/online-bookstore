@@ -1,64 +1,9 @@
-import {
-  Search,
-  Bell,
-  ArrowUpDown,
-  History,
-  Bookmark,
-  Settings,
-  Menu,
-  Share2,
-  Download,
-  ArrowRight,
-} from "lucide-react";
+import { Bookmark, Share2, Download, ArrowRight } from "lucide-react";
 
 export default function BookDetail() {
   return (
-    <div className="flex h-screen bg-[#F1EEE3]">
-      <div className="w-20 bg-white flex flex-col items-center py-6 gap-8 h-screen overflow-y-hidden">
-        <div className="mt-16 flex flex-col gap-8">
-          <button className="p-3 rounded-xl hover:bg-gray-100 transition-colors">
-            <ArrowUpDown className="w-6 h-6 text-gray-700" />
-          </button>
-          <button className="p-3 rounded-xl hover:bg-gray-100 transition-colors">
-            <History className="w-6 h-6 text-gray-700" />
-          </button>
-          <button className="p-3 rounded-xl hover:bg-gray-100 transition-colors">
-            <Bookmark className="w-6 h-6 text-gray-700" />
-          </button>
-          <button className="p-3 rounded-xl hover:bg-gray-100 transition-colors">
-            <Settings className="w-6 h-6 text-gray-700" />
-          </button>
-        </div>
-        <button className="mt-auto p-3 rounded-xl hover:bg-gray-100 transition-colors">
-          <Menu className="w-6 h-6 text-gray-700" />
-        </button>
-      </div>
-
-      <main className="px-20 h-screen overflow-y-scroll">
-        <nav className="px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <Search className="absolute left-1 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search book name, author, editi..."
-                className="pl-10 pr-4 py-2 w-[300px] bg-transparent focus:outline-none border-[#fdfbf7] focus:border-b  transition-all duration-300"
-              />
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <Bell className="w-6 h-6 text-gray-700" />
-            </div>
-            <img
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt="Profile"
-              className="w-10 h-10 rounded-full"
-            />
-            <span className="font-medium">Alexander Mark</span>
-          </div>
-        </nav>
-
+    <div className="flex bg-[#F1EEE3]">
+      <main className="px-20">
         <div className="grid grid-cols-2 mt-10">
           <div className="relative">
             <div className="absolute w-[300px] flex-shrink-0 right-0 me-20">
@@ -67,11 +12,6 @@ export default function BookDetail() {
                 alt="Harry Potter and the Half-Blood Prince"
                 className="w-full rounded-lg shadow-2xl"
               />
-              {/* <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4">
-                <button className="w-12 h-12 rounded-full bg-white/80 backdrop-blur flex items-center justify-center shadow-lg">
-                  <ArrowUpDown className="w-6 h-6 text-gray-700" />
-                </button>
-              </div> */}
             </div>
           </div>
           <div className="w-9/12  flex flex-col gap-8">
@@ -86,6 +26,7 @@ export default function BookDetail() {
             </p>
           </div>
         </div>
+
         <div className="bg-[#fdfbf7] px-20 py-10 mt-10 mb-10">
           <div className="grid grid-cols-2">
             <div></div>
