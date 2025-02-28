@@ -1,9 +1,10 @@
 import {
   Clock,
-  ChevronLeft,
-  ChevronRight,
-  ArrowRight,
+  // ChevronLeft,
+  // ChevronRight,
+  // ArrowRight,
   MoreVertical,
+  ArrowDown,
 } from "lucide-react";
 
 interface BookThumbnail {
@@ -48,6 +49,22 @@ export default function Books() {
     },
     {
       id: 5,
+      title: "Deadpool Samurai",
+      subtitle: "edition",
+      coverImage:
+        "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      publisher: "Marvel",
+    },
+    {
+      id: 6,
+      title: "Deadpool Samurai",
+      subtitle: "edition",
+      coverImage:
+        "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      publisher: "Marvel",
+    },
+    {
+      id: 5,
       title: "A Le...",
       subtitle: "The...",
       coverImage:
@@ -74,7 +91,7 @@ export default function Books() {
   return (
     <div className="flex-1 flex flex-col bg-[#F1EEE3] py-10">
       {/* Main Content Area */}
-      <main className="flex-1 overflow-auto px-4 md:px-8 py-6">
+      <main className="flex-1 overflow-auto px-4 md:px-8 ">
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row md:items-start justify-between mb-12">
           <div className="mb-6 md:mb-0 md:max-w-lg">
@@ -86,8 +103,8 @@ export default function Books() {
               and immerse yourself in the world of literature.
             </p>
             <button className="flex items-center bg-gray-900 text-white px-4 py-2 rounded-md">
-              Start reading
-              <ArrowRight className="ml-2 w-4 h-4" />
+              Find a Book
+              <ArrowDown className="ml-2 w-4 h-4" />
             </button>
           </div>
 
@@ -114,47 +131,32 @@ export default function Books() {
         </div>
 
         {/* Book Carousel */}
-        <div className="relative mb-6">
-          <div className="flex items-baseline overflow-x-auto pb-4 gap-8 md:gap-12 scroll-smooth hide-scrollbar">
-            {books.map((book, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-baseline my-20  gap-8 md:gap-12 scroll-smooth hide-scrollbar">
+          {books.map((book) => (
+            <div key={book.id} className={`mx-auto w-44`}>
               <div
-                key={book.id}
-                className={`flex-shrink-0 w-44 bg-blue-400 ${
-                  i === 1 ? "md:w-56" : ""
-                } `}
+                className={`mb-5 h-64 bg-red-300`}
+                style={{
+                  boxShadow: "-10px 13px 13px 1px rgba(0, 0, 0, 0.29)",
+                }}
               >
-                <div
-                  className={`mb-5 h-56 bg-red-300 ${i === 1 ? "md:w-56 h-64" : ""}`}
-                  style={{
-                    boxShadow: "-10px 13px 13px 1px rgba(0, 0, 0, 0.29)",
-                  }}
-                >
-                  <img
-                    src={book.coverImage}
-                    alt={book.title}
-                    className="w-full h-full object-cover shadow-md"
-                  />
-                </div>
-                <h3 className="font-medium text-sm">{book.title}</h3>
-                {book.subtitle && (
-                  <div className="flex items-center text-sm text-gray-500">
-                    <span>{book.subtitle}: </span>
-                    {book.publisher && (
-                      <span className="font-medium ml-1">{book.publisher}</span>
-                    )}
-                  </div>
-                )}
+                <img
+                  src={book.coverImage}
+                  alt={book.title}
+                  className="w-full h-full object-cover shadow-md"
+                />
               </div>
-            ))}
-          </div>
-          <div className="absolute top-12 -translate-y-1/2 right-10 flex gap-4">
-            <button className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md">
-              <ChevronLeft className="w-5 h-5 text-gray-600" />
-            </button>
-            <button className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md">
-              <ChevronRight className="w-5 h-5 text-gray-600" />
-            </button>
-          </div>
+              <h3 className="font-bold text-base">{book.title}</h3>
+              {book.subtitle && (
+                <div className="flex items-center text-sm text-gray-500">
+                  <span>{book.subtitle}: </span>
+                  {book.publisher && (
+                    <span className="font-medium ml-1">{book.publisher}</span>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Footer */}

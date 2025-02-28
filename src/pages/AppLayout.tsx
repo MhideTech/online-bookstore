@@ -10,7 +10,7 @@ export default function AppLayout() {
       <section className="flex-1 flex flex-col">
         {/* Header */}
         <DashboardNavbar />
-        <div className="h-screen overflow-y-scroll ">
+        <div className="h-screen overflow-y-scroll">
           <Outlet />
         </div>
       </section>
