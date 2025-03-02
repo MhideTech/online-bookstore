@@ -5,10 +5,8 @@ import DashboardSidebar from "../ui/DashboardSidebar";
 export default function AppLayout() {
   return (
     <main className="flex h-screen bg-stone-50">
-      {/* Left Sidebar */}
       <DashboardSidebar />
       <section className="flex-1 flex flex-col">
-        {/* Header */}
         <DashboardNavbar />
         <div className="h-screen overflow-y-scroll">
           <Outlet />
