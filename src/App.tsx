@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import BookDetail from "./pages/BookDetail";
 import Books from "./pages/Books";
 import AppLayout from "./pages/AppLayout";
+import BookmarkUI from "./pages/Bookmark";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "books",
         element: <Books />
+      },
+      {
+        path: "bookmark",
+        element: <BookmarkUI />
       }
     ]
   },

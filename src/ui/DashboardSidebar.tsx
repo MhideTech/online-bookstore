@@ -31,9 +31,11 @@ export default function DashboardSidebar() {
         <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
           <Clock className="w-5 text-gray-600" />
         </div>
-        <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
-          <Bookmark className="w-5 text-gray-600" />
-        </div>
+        <NavLink to="bookmark">
+          <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
+            <Bookmark className="w-5 text-gray-600" />
+          </div>
+        </NavLink>
       </div>
       <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
         <Settings className="w-5 text-gray-600" />
