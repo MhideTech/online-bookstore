@@ -144,15 +144,18 @@ export default function BookmarkUI() {
       </div>
       <div className="relative">
         <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
-        <div className="flex  overflow-y-hidden pb-4 gap-8 no-scrollbar relative mx-3">
+        <div className="flex  overflow-y-hidden pb-4 gap-14 no-scrollbar relative mx-3">
           {books.map((book) => (
             <div key={book.id} className="flex-shrink-0">
               <img
                 src={book.coverImage}
                 alt={book.title}
                 className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
+                style={{ boxShadow: "-4px 11px 7px 1px rgba(0,0,0,0.75)" }}
               />
-              <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">{book.title}</p>
+              <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">
+                {book.title}
+              </p>
             </div>
           ))}
         </div>

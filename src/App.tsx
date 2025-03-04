@@ -16,21 +16,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "book-detail",
-        element: <BookDetail />
+        element: <BookDetail />,
       },
       {
         path: "books",
-        element: <Books />
+        element: <Books />,
       },
       {
         path: "bookmark",
-        element: <BookmarkUI />
-      }
-    ]
-  },
-  {
-    path: "/books",
-    element: <Books />,
+        element: <BookmarkUI />,
+      },
+    ],
   },
 ]);
 
