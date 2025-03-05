@@ -144,7 +144,7 @@ export default function BookmarkUI() {
       </div>
       <div className="relative">
         <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
-        <div className="flex  overflow-y-hidden pb-4 gap-14 no-scrollbar relative mx-3">
+        <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
           {books.map((book) => (
             <div key={book.id} className="flex-shrink-0">
               <img
@@ -164,38 +164,58 @@ export default function BookmarkUI() {
   );
 
   return (
-    <div className="flex bg-amber-50">
-      {/* Main Content */}
-      <div className="flex-1 overflow-auto px-4 md:px-8 py-6">
-        {/* Top navigation */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8">
-          <div className="flex gap-2">
-            <button className="px-4 py-2 bg-amber-100 rounded-full text-amber-800 font-medium">
-              Shelves
-            </button>
-            <button className="px-4 py-2 bg-white rounded-full text-gray-700">
-              All Books
-            </button>
+    <div className="flex">
+      <div className="flex flex-1 h-[90vh] overflow-y-scroll no-scrollbar bg-amber-50">
+        {/* Main Content */}
+        <div className="flex-1 overflow-x-hidden no-scrollbar px-4 md:px-8 py-6">
+          {/* Top navigation */}
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8">
+            <div className="flex gap-2">
+              <button className="px-4 py-2 bg-amber-100 rounded-full text-amber-800 font-medium">
+                Shelves
+              </button>
+              <button className="px-4 py-2 bg-white rounded-full text-gray-700">
+                All Books
+              </button>
+            </div>
+
+            <div className="w-full md:w-auto flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Search in My library"
+                className="w-[400px] py-2 pl-10 pr-4 bg-white rounded-full border border-gray-200 focus:outline-none"
+              />
+            </div>
           </div>
 
-          <div className="w-full md:w-auto flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search in My library"
-              className="w-[400px] py-2 pl-10 pr-4 bg-white rounded-full border border-gray-200 focus:outline-none"
-            />
-          </div>
+          {/* Book shelves */}
+          <BookShelf
+            title="Currently reading"
+            books={currentlyReadingBooks}
+            showFullShelf={false}
+          />
+          <BookShelf title="Next up" books={nextUpBooks} />
+          <BookShelf title="Finished" books={finishedBooks} />
         </div>
-
-        {/* Book shelves */}
-        <BookShelf
-          title="Currently reading"
-          books={currentlyReadingBooks}
-          showFullShelf={false}
-        />
-        <BookShelf title="Next up" books={nextUpBooks} />
-        <BookShelf title="Finished" books={finishedBooks} />
+      </div>
+      <div className="w-3/12 p-6 bg-amber-50 border-l h-[90vh] overflow-y-scroll no-scrollbar">
+        <h1 className="font-bold text-2xl">Currently Reading</h1>
+        <div className="grid grid-cols-2 gap-5 mt-8">
+          {nextUpBooks.map((book) => (
+            <div key={book.id} className="flex-shrink-0 flex flex-col gap-3">
+              <img
+                src={book.coverImage}
+                alt={book.title}
+                className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
+                style={{ boxShadow: "-3px 1px 7px 1px rgba(0,0,0,0.75)" }}
+              />
+              <p className="truncate w-32 text-xs text-center">
+                {book.title}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

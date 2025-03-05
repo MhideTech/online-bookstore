@@ -9,7 +9,7 @@ export default function DashboardNavbar() {
   };
   
   return (
-    <header className="flex items-center justify-between px-4 md:px-8 py-4 border-b border-gray-200">
+    <header className="flex items-center justify-between px-4 md:px-8 h-[10vh] border-b border-gray-200">
       <div className="flex md:hidden">
         <Menu className="w-6 h-6 text-gray-700" />
       </div>
