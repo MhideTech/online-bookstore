@@ -1,0 +1,49 @@
+import { ArrowRight } from "lucide-react";
+
+interface BookInterface {
+  id: number;
+  title: string;
+  author?: string;
+  coverImage: string;
+}
+
+export default function BookmarkShelve({
+  title,
+  books,
+}: {
+  title: string;
+  books: BookInterface[];
+}) {
+  return (
+    <div className="mb-12">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-xl text-amber-800 font-medium">{title}</h2>
+        <a
+          href="#"
+          className="flex items-center text-gray-500 text-sm"
+          // onClick={() => setFullShelve((open) => !open)}
+        >
+          Full shelf <ArrowRight className="ml-1 w-4 h-4" />
+        </a>
+      </div>
+      <div className="relative">
+        <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
+        <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
+          {books.map((book) => (
+            <div key={book.id} className="flex-shrink-0">
+              <img
+                src={book.coverImage}
+                alt={book.title}
+                className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
+                style={{ boxShadow: "-4px 11px 7px 1px rgba(0,0,0,0.75)" }}
+              />
+              <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">
+                {book.title}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

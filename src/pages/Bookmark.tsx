@@ -1,21 +1,29 @@
 import { Search, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import FullShelve from "../ui/FullShelve";
+import BookShelve from "../ui/BookShelve";
 
 interface BookInterface {
   id: number;
   title: string;
   author?: string;
   coverImage: string;
+  shelve: string;
 }
 
 export default function BookmarkUI() {
-  // Book data for each shelf
-  const currentlyReadingBooks: BookInterface[] = [
+  const [fullShelve, setFullShelve] = useState(false);
+  const [fullShelveBooks, setFullShelveBooks] = useState([]);
+  const [fullShelveName, setFullShelveName] = useState("");
+
+  const books: BookInterface[] = [
     {
       id: 1,
       title: "The Stars My Destination",
       author: "Alfred Bester",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Currently Reading",
     },
     {
       id: 2,
@@ -23,6 +31,7 @@ export default function BookmarkUI() {
       author: "Ian Goodfellow",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Currently Reading",
     },
     {
       id: 3,
@@ -30,16 +39,15 @@ export default function BookmarkUI() {
       author: "Torrey Podmajersky",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Currently Reading",
     },
-  ];
-
-  const nextUpBooks: BookInterface[] = [
     {
       id: 4,
       title: "Lietuvos Pauksciai",
       author: "Tomas Ivanauskas",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Next Up",
     },
     {
       id: 5,
@@ -47,6 +55,7 @@ export default function BookmarkUI() {
       author: "J.R.R. Tolkien",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Next Up",
     },
     {
       id: 6,
@@ -54,6 +63,7 @@ export default function BookmarkUI() {
       author: "Lonely Planet",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Next Up",
     },
     {
       id: 7,
@@ -61,6 +71,7 @@ export default function BookmarkUI() {
       author: "Lewis Carroll",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Next Up",
     },
     {
       id: 8,
@@ -68,6 +79,7 @@ export default function BookmarkUI() {
       author: "George Orwell",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Next Up",
     },
     {
       id: 9,
@@ -75,16 +87,15 @@ export default function BookmarkUI() {
       author: "Don Norman",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Next Up",
     },
-  ];
-
-  const finishedBooks: BookInterface[] = [
     {
       id: 10,
       title: "Steve Jobs",
       author: "Walter Isaacson",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Finished Book",
     },
     {
       id: 11,
@@ -92,6 +103,7 @@ export default function BookmarkUI() {
       author: "Dan Ariely",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Finished Book",
     },
     {
       id: 12,
@@ -99,6 +111,7 @@ export default function BookmarkUI() {
       author: "Martijn Doolaard",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Finished Book",
     },
     {
       id: 13,
@@ -106,6 +119,7 @@ export default function BookmarkUI() {
       author: "Travel Guide",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Finished Book",
     },
     {
       id: 14,
@@ -113,6 +127,7 @@ export default function BookmarkUI() {
       author: "J.R.R. Tolkien",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Finished Book",
     },
     {
       id: 15,
@@ -120,48 +135,53 @@ export default function BookmarkUI() {
       author: "David Airey",
       coverImage:
         "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      shelve: "Finished Book",
     },
   ];
 
-  // Book shelf component
-  const BookShelf = ({
-    title,
-    books,
-    showFullShelf = true,
-  }: {
-    title: string;
-    books: BookInterface[];
-    showFullShelf?: boolean;
-  }) => (
-    <div className="mb-12">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl text-amber-800 font-medium">{title}</h2>
-        {showFullShelf && (
-          <a href="#" className="flex items-center text-gray-500 text-sm">
-            Full shelf <ArrowRight className="ml-1 w-4 h-4" />
-          </a>
-        )}
-      </div>
-      <div className="relative">
-        <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
-        <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
-          {books.map((book) => (
-            <div key={book.id} className="flex-shrink-0">
-              <img
-                src={book.coverImage}
-                alt={book.title}
-                className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
-                style={{ boxShadow: "-4px 11px 7px 1px rgba(0,0,0,0.75)" }}
-              />
-              <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">
-                {book.title}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+  // // Book shelf component
+  // const BookShelf = ({
+  //   title,
+  //   books,
+  //   showFullShelf = true,
+  // }: {
+  //   title: string;
+  //   books: BookInterface[];
+  //   showFullShelf?: boolean;
+  // }) => (
+  //   <div className="mb-12">
+  //     <div className="flex justify-between items-center mb-6">
+  //       <h2 className="text-xl text-amber-800 font-medium">{title}</h2>
+  //       {showFullShelf && (
+  //         <a
+  //           href="#"
+  //           className="flex items-center text-gray-500 text-sm"
+  //           onClick={() => setFullShelve((open) => !open)}
+  //         >
+  //           Full shelf <ArrowRight className="ml-1 w-4 h-4" />
+  //         </a>
+  //       )}
+  //     </div>
+  //     <div className="relative">
+  //       <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
+  //       <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
+  //         {books.map((book) => (
+  //           <div key={book.id} className="flex-shrink-0">
+  //             <img
+  //               src={book.coverImage}
+  //               alt={book.title}
+  //               className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
+  //               style={{ boxShadow: "-4px 11px 7px 1px rgba(0,0,0,0.75)" }}
+  //             />
+  //             <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">
+  //               {book.title}
+  //             </p>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 
   return (
     <div className="flex">
@@ -189,34 +209,81 @@ export default function BookmarkUI() {
             </div>
           </div>
 
-          {/* Book shelves */}
+          {/* Book shelves
           <BookShelf
             title="Currently reading"
             books={currentlyReadingBooks}
             showFullShelf={false}
           />
           <BookShelf title="Next up" books={nextUpBooks} />
-          <BookShelf title="Finished" books={finishedBooks} />
-        </div>
-      </div>
-      <div className="w-3/12 p-6 bg-amber-50 border-l h-[90vh] overflow-y-scroll no-scrollbar">
-        <h1 className="font-bold text-2xl">Currently Reading</h1>
-        <div className="grid grid-cols-2 gap-5 mt-8">
-          {nextUpBooks.map((book) => (
-            <div key={book.id} className="flex-shrink-0 flex flex-col gap-3">
-              <img
-                src={book.coverImage}
-                alt={book.title}
-                className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
-                style={{ boxShadow: "-3px 1px 7px 1px rgba(0,0,0,0.75)" }}
-              />
-              <p className="truncate w-32 text-xs text-center">
-                {book.title}
-              </p>
+          <BookShelf title="Finished" books={finishedBooks} /> */}
+
+          <div className="mb-12">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl text-amber-800 font-medium">
+                Currently Reading
+              </h2>
+              <a
+                href="#"
+                className="flex items-center text-gray-500 text-sm"
+                onClick={() => {
+                  setFullShelve((open) => !open);
+                  setFullShelveBooks(
+                    books.filter((book) => book.shelve === "Currently Reading")
+                  );
+                }}
+              >
+                Full shelf <ArrowRight className="ml-1 w-4 h-4" />
+              </a>
             </div>
-          ))}
+            <div className="relative">
+              <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
+              <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
+                {books
+                  .filter((book) => book.shelve === "Currently Reading")
+                  .map((book) => (
+                    <div key={book.id} className="flex-shrink-0">
+                      <img
+                        src={book.coverImage}
+                        alt={book.title}
+                        className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
+                        style={{
+                          boxShadow: "-4px 11px 7px 1px rgba(0,0,0,0.75)",
+                        }}
+                      />
+                      <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">
+                        {book.title}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          <BookShelve
+            name="Next Up"
+            books={books}
+            setFullShelve={setFullShelve}
+            setFullShelveBooks={setFullShelveBooks}
+            setFullShelveName={setFullShelveName}
+          />
+          <BookShelve
+            name="Currently Reading"
+            books={books}
+            setFullShelve={setFullShelve}
+            setFullShelveBooks={setFullShelveBooks}
+            setFullShelveName={setFullShelveName}
+          />
         </div>
       </div>
+
+      {fullShelve && (
+        <FullShelve
+          books={fullShelveBooks}
+          fullShelveName={fullShelveName}
+          setFullShelve={setFullShelve}
+        />
+      )}
     </div>
   );
 }
