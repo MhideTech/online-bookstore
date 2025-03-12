@@ -1,7 +1,8 @@
-import { Search, ArrowRight } from "lucide-react";
+import { Search } from "lucide-react";
 import { useState } from "react";
 import FullShelve from "../ui/FullShelve";
 import BookShelve from "../ui/BookShelve";
+import InputWithOverlay from "../ui/Search";
 
 interface BookInterface {
   id: number;
@@ -209,6 +210,8 @@ export default function BookmarkUI() {
             </div>
           </div>
 
+          <InputWithOverlay books={books} />
+
           {/* Book shelves
           <BookShelf
             title="Currently reading"
@@ -218,7 +221,7 @@ export default function BookmarkUI() {
           <BookShelf title="Next up" books={nextUpBooks} />
           <BookShelf title="Finished" books={finishedBooks} /> */}
 
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl text-amber-800 font-medium">
                 Currently Reading
@@ -258,17 +261,18 @@ export default function BookmarkUI() {
                   ))}
               </div>
             </div>
-          </div>
+          </div> */}
 
           <BookShelve
-            name="Next Up"
+            name="Currently Reading"
             books={books}
             setFullShelve={setFullShelve}
             setFullShelveBooks={setFullShelveBooks}
             setFullShelveName={setFullShelveName}
           />
+
           <BookShelve
-            name="Currently Reading"
+            name="Next Up"
             books={books}
             setFullShelve={setFullShelve}
             setFullShelveBooks={setFullShelveBooks}

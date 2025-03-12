@@ -1,4 +1,11 @@
 import { ArrowRight } from "lucide-react";
+interface BookInterface {
+  id: number;
+  title: string;
+  author?: string;
+  coverImage: string;
+  shelve: string;
+}
 
 export default function BookShelve({
   name,
@@ -6,6 +13,12 @@ export default function BookShelve({
   setFullShelveBooks,
   books,
   setFullShelveName,
+}: {
+  name: string;
+  setFullShelve: (value: boolean) => void;
+  setFullShelveBooks: (value: []) => void;
+//   books: BookInterface[];
+  setFullShelveName: (value: string) => void;
 }) {
   return (
     <div className="mb-12">
@@ -16,9 +29,11 @@ export default function BookShelve({
           className="flex items-center text-gray-500 text-sm"
           onClick={() => {
             setFullShelve(true);
-            setFullShelveBooks(books.filter((book) => book.shelve === name));
+            setFullShelveBooks(
+              books.filter((book: { shelve: string }) => book.shelve === name)
+            );
             setFullShelveName(name);
-            console.log(name)
+            console.log(name);
           }}
         >
           Full shelf <ArrowRight className="ml-1 w-4 h-4" />
@@ -28,8 +43,8 @@ export default function BookShelve({
         <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
         <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
           {books
-            .filter((book) => book.shelve === name)
-            .map((book) => (
+            .filter((book: { shelve: string }) => book.shelve === name)
+            .map((book: { id: number; coverImage: string; title: string }) => (
               <div key={book.id} className="flex-shrink-0">
                 <img
                   src={book.coverImage}
