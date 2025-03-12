@@ -4,7 +4,7 @@ import DashboardSidebar from "../ui/DashboardSidebar";
 
 export default function AppLayout() {
   return (
-    <main className="flex h-screen bg-stone-50">
+    <main className="flex h-screen">
       <DashboardSidebar />
       <section className="flex-1 flex flex-col">
         <DashboardNavbar />

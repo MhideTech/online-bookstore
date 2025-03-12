@@ -11,6 +11,12 @@
     font-family: "Piedra", 'serif';
 } */
 
+.dashboard-sidebar .active {
+  background-color: black;
+  font-weight: bold;
+  color: white !important;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

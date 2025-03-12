@@ -1,8 +1,7 @@
-import { Search } from "lucide-react";
 import { useState } from "react";
 import FullShelve from "../ui/FullShelve";
 import BookShelve from "../ui/BookShelve";
-import InputWithOverlay from "../ui/Search";
+import SearchBook from "../ui/Search";
 
 interface BookInterface {
   id: number;
@@ -186,7 +185,7 @@ export default function BookmarkUI() {
 
   return (
     <div className="flex">
-      <div className="flex flex-1 h-[90vh] overflow-y-scroll no-scrollbar bg-amber-50">
+      <div className="flex flex-1 h-[90vh] overflow-y-scroll no-scrollbar">
         {/* Main Content */}
         <div className="flex-1 overflow-x-hidden no-scrollbar px-4 md:px-8 py-6">
           {/* Top navigation */}
@@ -200,17 +199,8 @@ export default function BookmarkUI() {
               </button>
             </div>
 
-            <div className="w-full md:w-auto flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search in My library"
-                className="w-[400px] py-2 pl-10 pr-4 bg-white rounded-full border border-gray-200 focus:outline-none"
-              />
-            </div>
+            <SearchBook books={books} />
           </div>
-
-          <InputWithOverlay books={books} />
 
           {/* Book shelves
           <BookShelf

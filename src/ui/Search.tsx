@@ -2,7 +2,7 @@ import { div } from "framer-motion/client";
 import { Search } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 
-export default function InputWithOverlay({ books }) {
+export default function SearchBook({ books }) {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [search, setSearch] = useState("");
@@ -49,7 +49,7 @@ export default function InputWithOverlay({ books }) {
         </div>
         {isFocused && (
           <div
-            className="absolute top-12 h-96 inset-0 bg-gray-50 z-50 p-10"
+            className="fixed w-11/12 left-10 top-40 mx-auto h-96 inset-0 bg-gray-50 z-50 p-10"
             onClick={() => setIsFocused(false)}
           >
             <div className="grid grid-cols-6">

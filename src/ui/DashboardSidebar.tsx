@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 export default function DashboardSidebar() {
   return (
-    <div className="hidden md:flex flex-col items-center justify-between py-6 px-3 border-r border-gray-200 bg-amber-50">
-      <div className="flex flex-col items-center justify-between gap-10">
+    <div className="hidden md:flex flex-col items-center justify-between py-6 px-3 border-r border-gray-200 ">
+      <div className="flex flex-col items-center justify-between gap-10 dashboard-sidebar">
         <div className="">
           <svg
             className="w-10 h-10 text-black"
@@ -18,23 +18,26 @@ export default function DashboardSidebar() {
           </svg>
         </div>
 
-        <NavLink to="books">
-          <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
-            <Home className="w-5 text-gray-600" />
-          </div>
+        <NavLink
+          to="books"
+          className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12"
+        >
+          <Home className="w-5 text-gray-600" />
         </NavLink>
-        <NavLink to="book-detail">
-          <div className="flex items-center justify-center bg-yellow-100 p-3 rounded-lg shadow-sm w-12 h-12">
-            <Book className="w-5 text-gray-600" />
-          </div>
+        <NavLink
+          to="book-detail"
+          className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12"
+        >
+          <Book className="w-5 text-gray-600" />
         </NavLink>
         <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
           <Clock className="w-5 text-gray-600" />
         </div>
-        <NavLink to="bookmark">
-          <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
-            <Bookmark className="w-5 text-gray-600" />
-          </div>
+        <NavLink
+          to="bookmark"
+          className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12"
+        >
+          <Bookmark className="w-5 text-gray-600" />
         </NavLink>
       </div>
       <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">

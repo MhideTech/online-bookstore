@@ -89,7 +89,7 @@ export default function Books() {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-[#F1EEE3] py-10">
+    <div className="flex-1 flex flex-col py-10">
       {/* Main Content Area */}
       <main className="flex-1 overflow-auto px-4 md:px-8 ">
         {/* Hero Section */}
