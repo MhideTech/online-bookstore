@@ -6,16 +6,18 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useBooks } from "../contexts/BookContext";
 
-export default function BookDetail({ books }) {
+export default function BookDetail() {
+  const { books } = useBooks();
   const { Id } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
 
+  // const newId = +Id - 1;
   console.log(Id);
-  
 
-  const book = books[Id || ""];
-  console.log(book)
+  const book = books.find((book) => book.id == Id);
+  console.log(book);
 
   return (
     <div className="flex flex-col w-full relative">
@@ -40,10 +42,10 @@ export default function BookDetail({ books }) {
 
           <div className="w-full md:w-9/12 flex flex-col gap-4 md:gap-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-center md:text-left">
-              Harry Potter: Half Blood Prince
+              {book.title}
             </h1>
             <p className="text-lg md:text-xl text-center md:text-left">
-              JK Rowling
+              {book.author}
             </p>
 
             <p className="text-gray-600 text-center md:text-left">

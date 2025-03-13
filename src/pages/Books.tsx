@@ -7,6 +7,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useBooks } from "../contexts/BookContext";
 
 interface BookThumbnail {
   id: number;
@@ -17,69 +18,14 @@ interface BookThumbnail {
   publisher?: string;
 }
 
-export default function Books({books}) {
+export default function Books() {
   const navigate = useNavigate();
+  const { books } = useBooks();
 
   const handleBookClick = (book) => {
     navigate(`/app/books/${book.id}`);
   };
 
-  // Sample book data
-  // const books: BookThumbnail[] = [
-  //   {
-  //     id: 1,
-  //     title: "Beauty and the Beast",
-  //     subtitle: "Disney",
-  //     coverImage:
-  //       "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  //     publisher: "Disney",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Fire and Blood - A Game of Thrones series",
-  //     coverImage:
-  //       "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "The Chronicles of Narnia",
-  //     coverImage:
-  //       "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Deadpool Samurai",
-  //     subtitle: "edition",
-  //     coverImage:
-  //       "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  //     publisher: "Marvel",
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Deadpool Samurai",
-  //     subtitle: "edition",
-  //     coverImage:
-  //       "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  //     publisher: "Marvel",
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Deadpool Samurai",
-  //     subtitle: "edition",
-  //     coverImage:
-  //       "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  //     publisher: "Marvel",
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "A Le...",
-  //     subtitle: "The...",
-  //     coverImage:
-  //       "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  //   },
-  // ];
-
-  // Current progress
   const currentProgress = {
     current: 4,
     total: 60,
