@@ -1,8 +1,31 @@
-import { Bookmark, Share2, Download, ArrowRight } from "lucide-react";
+import {
+  Bookmark,
+  Share2,
+  Download,
+  ArrowRight,
+  ArrowLeft,
+} from "lucide-react";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function BookDetail() {
+export default function BookDetail({ books }) {
+  const { Id } = useParams<{ bookId: string }>();
+  const navigate = useNavigate();
+
+  console.log(Id);
+  
+
+  const book = books[Id || ""];
+  console.log(book)
+
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full relative">
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center mt-6 text-gray-600 hover:text-gray-900 absolute left-8 cursor-pointer underline"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back to Books
+      </button>
       <main className="px-4 md:px-10 lg:px-20">
         <div className="flex flex-col md:grid md:grid-cols-2 mt-6 md:mt-10">
           <div className="flex justify-center mb-8 md:mb-0 md:relative order-1 md:order-none">
