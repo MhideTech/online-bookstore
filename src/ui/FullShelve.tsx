@@ -1,4 +1,6 @@
 import { PanelRightClose } from "lucide-react";
+import { useBooks } from "../contexts/BookContext";
+import { useNavigate } from "react-router-dom";
 
 interface FullShelveProps {
   fullShelveBooks: [];
@@ -11,6 +13,12 @@ export default function FullShelve({
   fullShelveName,
   setFullShelve,
 }: FullShelveProps) {
+  const navigate = useNavigate();
+
+  const handleBookClick = (book) => {
+    navigate(`/app/bookmark/${book.id}`);
+  };
+
   return (
     <div className="w-3/12 p-6 bg-white border-l h-[90vh] overflow-y-scroll no-scrollbar transition-all ease-in duration-300">
       <div className="flex justify-between">
@@ -22,7 +30,11 @@ export default function FullShelve({
       <div className="grid grid-cols-2 gap-5 mt-8">
         {fullShelveBooks.map(
           (book: { id: number; coverImage: string; title: string }) => (
-            <div key={book.id} className="flex-shrink-0 flex flex-col gap-3">
+            <div
+              key={book.id}
+              className="flex-shrink-0 flex flex-col gap-3"
+              onClick={() => handleBookClick(book)}
+            >
               <img
                 src={book.coverImage}
                 alt={book.title}

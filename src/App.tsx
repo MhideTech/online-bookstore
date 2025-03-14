@@ -27,6 +27,10 @@ const router = createBrowserRouter([
         path: "bookmark",
         element: <BookmarkUI />,
       },
+      {
+        path: "bookmark/:Id",
+        element: <BookDetail />,
+      },
     ],
   },
 ]);

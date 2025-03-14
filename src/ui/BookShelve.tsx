@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { useBooks } from "../contexts/BookContext";
+import { useNavigate } from "react-router-dom";
 
 export default function BookShelve({
   name,
@@ -13,6 +14,11 @@ export default function BookShelve({
   setFullShelveName: (value: string) => void;
 }) {
   const { books } = useBooks();
+  const navigate = useNavigate();
+
+  const handleBookClick = (book) => {
+    navigate(`/app/bookmark/${book.id}`);
+  };
 
   return (
     <div className="mb-12">
@@ -39,7 +45,11 @@ export default function BookShelve({
           {books
             .filter((book: { shelve: string }) => book.shelve === name)
             .map((book: { id: number; coverImage: string; title: string }) => (
-              <div key={book.id} className="flex-shrink-0">
+              <div
+                key={book.id}
+                className="flex-shrink-0"
+                onClick={() => handleBookClick(book)}
+              >
                 <img
                   src={book.coverImage}
                   alt={book.title}

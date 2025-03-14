@@ -13,11 +13,7 @@ export default function BookDetail() {
   const { Id } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
 
-  // const newId = +Id - 1;
-  console.log(Id);
-
   const book = books.find((book) => book.id == Id);
-  console.log(book);
 
   return (
     <div className="flex flex-col w-full relative">
