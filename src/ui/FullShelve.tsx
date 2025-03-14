@@ -1,31 +1,26 @@
 import { PanelRightClose } from "lucide-react";
 
 interface FullShelveProps {
-  books: []; // Replace `Book` with the actual type of your `books` array elements
+  fullShelveBooks: [];
   fullShelveName: string;
-  setFullShelve: (value: boolean) => void; // Replace `any` with the appropriate type for the function
+  setFullShelve: (value: boolean) => void;
 }
 
 export default function FullShelve({
-  books,
+  fullShelveBooks,
   fullShelveName,
   setFullShelve,
 }: FullShelveProps) {
   return (
-    <div className="w-3/12 p-6 bg-amber-50 border-l h-[90vh] overflow-y-scroll no-scrollbar transition-all ease-in duration-300">
+    <div className="w-3/12 p-6 bg-white border-l h-[90vh] overflow-y-scroll no-scrollbar transition-all ease-in duration-300">
       <div className="flex justify-between">
         <h1 className="font-bold text-2xl">{fullShelveName}</h1>
-        <span
-          onClick={() => {
-            // console.log(fullShelve)
-            setFullShelve(false);
-          }}
-        >
+        <span onClick={() => setFullShelve(false)}>
           <PanelRightClose />
         </span>
       </div>
       <div className="grid grid-cols-2 gap-5 mt-8">
-        {books.map(
+        {fullShelveBooks.map(
           (book: { id: number; coverImage: string; title: string }) => (
             <div key={book.id} className="flex-shrink-0 flex flex-col gap-3">
               <img

@@ -1,13 +1,11 @@
-import { div } from "framer-motion/client";
 import { Search } from "lucide-react";
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function SearchBook({ books }) {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [search, setSearch] = useState("");
 
-  // Close the overlay and box if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -27,13 +25,8 @@ export default function SearchBook({ books }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isFocused]);
 
-  console.log(books.filter((book) => book.title.toLowerCase() === search));
-
-  console.log(search);
-
   return (
     <div className="">
-      {/* Input field */}
       <div className="relative w-full md:w-auto flex-1">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -53,10 +46,10 @@ export default function SearchBook({ books }) {
             onClick={() => setIsFocused(false)}
           >
             <div className="grid grid-cols-6">
-              {search.length >= 3 &&
+              {search.length >= 1 &&
                 books
                   .filter((book) =>
-                    book.title.toLowerCase().includes(search.toLowerCase())
+                    book.title.toLowerCase().startsWith(search.toLowerCase())
                   )
                   .map((book) => (
                     <div key={book.id} className={`mx-auto w-44`}>

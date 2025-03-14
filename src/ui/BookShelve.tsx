@@ -1,25 +1,19 @@
 import { ArrowRight } from "lucide-react";
-interface BookInterface {
-  id: number;
-  title: string;
-  author?: string;
-  coverImage: string;
-  shelve: string;
-}
+import { useBooks } from "../contexts/BookContext";
 
 export default function BookShelve({
   name,
   setFullShelve,
   setFullShelveBooks,
-  books,
   setFullShelveName,
 }: {
   name: string;
   setFullShelve: (value: boolean) => void;
   setFullShelveBooks: (value: []) => void;
-//   books: BookInterface[];
   setFullShelveName: (value: string) => void;
 }) {
+  const { books } = useBooks();
+
   return (
     <div className="mb-12">
       <div className="flex justify-between items-center mb-6">

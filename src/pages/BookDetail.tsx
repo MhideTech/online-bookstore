@@ -41,7 +41,7 @@ export default function BookDetail() {
           </div>
 
           <div className="w-full md:w-9/12 flex flex-col gap-4 md:gap-8">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-center md:text-left">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center md:text-left">
               {book.title}
             </h1>
             <p className="text-lg md:text-xl text-center md:text-left">
@@ -55,10 +55,10 @@ export default function BookDetail() {
           </div>
         </div>
 
-        <div className="bg-[#fdfbf7] px-4 md:px-10 lg:px-20 py-6 md:py-10 mt-6 md:mt-10 mb-6 md:mb-10">
+        <div className="bg-gray-50 border border-gray-300 px-4 md:px-10 lg:px-20 py-6 md:py-10 mt-6 md:mt-10 mb-6 md:mb-10">
           <div className="flex flex-col md:grid md:grid-cols-2 mb-8">
             <div></div>
-            <div className="flex flex-col sm:flex-row justify-between gap-4 mb-8 md:mb-12 w-full md:w-10/12 border-b-2 border-[#F1EEE3] pb-6 md:pb-10">
+            <div className="flex flex-col sm:flex-row justify-between gap-4 mb-8 md:mb-12 w-full md:w-10/12 border-b-2 border-gray-300 pb-6 md:pb-10">
               <button className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors w-full sm:w-auto">
                 <span>Start reading</span>
                 <ArrowRight className="w-5 h-5 ml-2" />

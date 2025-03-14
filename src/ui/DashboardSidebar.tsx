@@ -1,4 +1,4 @@
-import { Book, Bookmark, Clock, Home, Settings } from "lucide-react";
+import { Bookmark, Clock, Home, Settings } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 export default function DashboardSidebar() {
@@ -23,12 +23,6 @@ export default function DashboardSidebar() {
           className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12"
         >
           <Home className="w-5 text-gray-600" />
-        </NavLink>
-        <NavLink
-          to="book-detail"
-          className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12"
-        >
-          <Book className="w-5 text-gray-600" />
         </NavLink>
         <div className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm w-12 h-12">
           <Clock className="w-5 text-gray-600" />
