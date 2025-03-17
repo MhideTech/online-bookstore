@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { useBooks } from "../contexts/BookContext";
 import { useNavigate } from "react-router-dom";
+import { useBookmark } from "../contexts/BookmarkContext";
 
 export default function BookShelve({
   name,
@@ -13,7 +14,7 @@ export default function BookShelve({
   setFullShelveBooks: (value: []) => void;
   setFullShelveName: (value: string) => void;
 }) {
-  const { books } = useBooks();
+  const { bookmarks } = useBookmark();
   const navigate = useNavigate();
 
   const handleBookClick = (book) => {
@@ -30,7 +31,7 @@ export default function BookShelve({
           onClick={() => {
             setFullShelve(true);
             setFullShelveBooks(
-              books.filter((book: { shelve: string }) => book.shelve === name)
+              bookmarks.filter((book: { shelve: string }) => book.shelve === name)
             );
             setFullShelveName(name);
             console.log(name);
@@ -42,7 +43,7 @@ export default function BookShelve({
       <div className="relative">
         <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
         <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
-          {books
+          {bookmarks
             .filter((book: { shelve: string }) => book.shelve === name)
             .map((book: { id: number; coverImage: string; title: string }) => (
               <div

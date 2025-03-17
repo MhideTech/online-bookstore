@@ -5,6 +5,8 @@ import Books from "./pages/Books";
 import AppLayout from "./pages/AppLayout";
 import BookmarkUI from "./pages/Bookmark";
 import { BooksProvider } from "./contexts/BookContext";
+import { BookmarkProvider } from "./contexts/BookmarkContext";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,20 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <BooksProvider>
-      <RouterProvider router={router}></RouterProvider>;
+      <BookmarkProvider>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <RouterProvider router={router}></RouterProvider>;
+      </BookmarkProvider>
     </BooksProvider>
   );
 }

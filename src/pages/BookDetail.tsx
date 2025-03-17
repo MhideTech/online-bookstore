@@ -7,13 +7,16 @@ import {
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useBooks } from "../contexts/BookContext";
+import { useBookmark } from "../contexts/BookmarkContext";
 
 export default function BookDetail() {
   const { books } = useBooks();
   const { Id } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
+  const { addBookToBookmarks, toggleBookmark, isBookmarked } = useBookmark();
 
   const book = books.find((book) => book.id == Id);
+  const bookmarked = isBookmarked(book?.id);
 
   return (
     <div className="flex flex-col w-full relative">
@@ -55,13 +58,25 @@ export default function BookDetail() {
           <div className="flex flex-col md:grid md:grid-cols-2 mb-8">
             <div></div>
             <div className="flex flex-col sm:flex-row justify-between gap-4 mb-8 md:mb-12 w-full md:w-10/12 border-b-2 border-gray-300 pb-6 md:pb-10">
-              <button className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors w-full sm:w-auto">
+              <button
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors w-full sm:w-auto"
+                onClick={() => addBookToBookmarks(book, "Currently Reading")}
+              >
                 <span>Start reading</span>
                 <ArrowRight className="w-5 h-5 ml-2" />
               </button>
               <div className="flex justify-center sm:justify-start gap-3 mt-4 sm:mt-0">
-                <button className="p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
-                  <Bookmark className="w-5 h-5 text-gray-700" />
+                <button
+                  className={`p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors ${
+                    bookmarked ? "bg-gray-900 text-gray-50" : "text-gray-700"
+                  }`}
+                  onClick={() => toggleBookmark(book)}
+                >
+                  <Bookmark
+                    className={`w-5 h-5 ${
+                      bookmarked ? "text-white" : "text-gray-700"
+                    }`}
+                  />
                 </button>
                 <button className="p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
                   <Share2 className="w-5 h-5 text-gray-700" />
