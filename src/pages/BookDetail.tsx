@@ -11,12 +11,12 @@ import { useBookmark } from "../contexts/BookmarkContext";
 
 export default function BookDetail() {
   const { books } = useBooks();
-  const { Id } = useParams<{ bookId: string }>();
+  const { bookId } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
   const { addBookToBookmarks, toggleBookmark, isBookmarked } = useBookmark();
 
-  const book = books.find((book) => book.id == Id);
-  const bookmarked = isBookmarked(book?.id);
+  const book = books.find((book) => book.id == Number(bookId));
+  const bookmarked = isBookmarked(book?.id ?? 0);
 
   return (
     <div className="flex flex-col w-full relative">
@@ -41,10 +41,10 @@ export default function BookDetail() {
 
           <div className="w-full md:w-9/12 flex flex-col gap-4 md:gap-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center md:text-left">
-              {book.title}
+              {book?.title}
             </h1>
             <p className="text-lg md:text-xl text-center md:text-left">
-              {book.author}
+              {book?.author}
             </p>
 
             <p className="text-gray-600 text-center md:text-left">
@@ -60,7 +60,9 @@ export default function BookDetail() {
             <div className="flex flex-col sm:flex-row justify-between gap-4 mb-8 md:mb-12 w-full md:w-10/12 border-b-2 border-gray-300 pb-6 md:pb-10">
               <button
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors w-full sm:w-auto"
-                onClick={() => addBookToBookmarks(book, "Currently Reading")}
+                onClick={() =>
+                  book && addBookToBookmarks(book, "Currently Reading")
+                }
               >
                 <span>Start reading</span>
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -70,7 +72,7 @@ export default function BookDetail() {
                   className={`p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors ${
                     bookmarked ? "bg-gray-900 text-gray-50" : "text-gray-700"
                   }`}
-                  onClick={() => toggleBookmark(book)}
+                  onClick={() => book && toggleBookmark(book)}
                 >
                   <Bookmark
                     className={`w-5 h-5 ${
