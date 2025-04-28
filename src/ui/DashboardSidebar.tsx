@@ -1,11 +1,11 @@
 import { Bookmark, Clock, Home, Settings } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function DashboardSidebar() {
   return (
     <div className="hidden md:flex flex-col items-center justify-between py-6 px-3 border-r border-gray-200 ">
       <div className="flex flex-col items-center justify-between gap-10 dashboard-sidebar">
-        <div className="">
+        <Link to="/">
           <svg
             className="w-10 h-10 text-black"
             viewBox="0 0 24 24"
@@ -16,7 +16,7 @@ export default function DashboardSidebar() {
             <path d="M20 16V4a2 2 0 00-2-2H6a2 2 0 00-2 2v16l6-3 6 3V16" />
             <path d="M8 10C8 8.89543 8.89543 8 10 8V8C11.1046 8 12 8.89543 12 10V10" />
           </svg>
-        </div>
+        </Link>
 
         <NavLink
           to="books"
