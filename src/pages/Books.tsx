@@ -7,22 +7,22 @@ import {
   ArrowDown,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useBooks } from "../contexts/BookContext";
+import { BookInterface, useBooks } from "../contexts/BookContext";
 
-interface BookThumbnail {
-  id: number;
-  title: string;
-  subtitle?: string;
-  author?: string;
-  coverImage: string;
-  publisher?: string;
-}
+// interface BookThumbnail {
+//   id: number;
+//   title: string;
+//   subtitle?: string;
+//   author?: string;
+//   coverImage: string;
+//   publisher?: string;
+// }
 
 export default function Books() {
   const navigate = useNavigate();
   const { books } = useBooks();
 
-  const handleBookClick = (book) => {
+  const handleBookClick = (book: BookInterface) => {
     navigate(`/app/books/${book.id}`);
   };
 

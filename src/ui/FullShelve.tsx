@@ -1,9 +1,9 @@
 import { PanelRightClose } from "lucide-react";
-import { useBooks } from "../contexts/BookContext";
 import { useNavigate } from "react-router-dom";
+import { BookInterface } from "../contexts/BookContext";
 
 interface FullShelveProps {
-  fullShelveBooks: [];
+  fullShelveBooks: BookInterface[];
   fullShelveName: string;
   setFullShelve: (value: boolean) => void;
 }
@@ -15,7 +15,7 @@ export default function FullShelve({
 }: FullShelveProps) {
   const navigate = useNavigate();
 
-  const handleBookClick = (book) => {
+  const handleBookClick = (book: { id: unknown; coverImage?: string; title?: string; }) => {
     navigate(`/app/bookmark/${book.id}`);
   };
 

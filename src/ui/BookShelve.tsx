@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
-import { useBooks } from "../contexts/BookContext";
 import { useNavigate } from "react-router-dom";
 import { useBookmark } from "../contexts/BookmarkContext";
+import { BookInterface } from "../contexts/BookContext";
 
 export default function BookShelve({
   name,
@@ -11,13 +11,17 @@ export default function BookShelve({
 }: {
   name: string;
   setFullShelve: (value: boolean) => void;
-  setFullShelveBooks: (value: []) => void;
+  setFullShelveBooks: (value: BookInterface[]) => void;
   setFullShelveName: (value: string) => void;
 }) {
   const { bookmarks } = useBookmark();
   const navigate = useNavigate();
 
-  const handleBookClick = (book) => {
+  const handleBookClick = (book: {
+    id: string;
+    coverImage?: string;
+    title?: string;
+  }) => {
     navigate(`/app/bookmark/${book.id}`);
   };
 
@@ -31,7 +35,11 @@ export default function BookShelve({
           onClick={() => {
             setFullShelve(true);
             setFullShelveBooks(
-              bookmarks.filter((book: { shelve: string }) => book.shelve === name)
+              bookmarks
+                .filter(
+                  (book) => book.shelve !== undefined && book.shelve === name
+                )
+                .map((book) => ({ ...book, shelve: book.shelve as string }))
             );
             setFullShelveName(name);
             console.log(name);
@@ -41,31 +49,33 @@ export default function BookShelve({
         </a>
       </div>
       <div className="relative">
-        <div className="bg-[#C8C5BB] h-6 rounded w-full absolute bottom-0 z-10"></div>
-        <div className="flex overflow-x-scroll no-scrollbar  overflow-y-hidden pb-6 gap-14 relative mx-3">
-          {bookmarks
-            .filter((book: { shelve: string }) => book.shelve === name)
-            .map((book: { id: number; coverImage: string; title: string }) => (
-              <div
-                key={book.id}
-                className="flex-shrink-0"
-                onClick={() => handleBookClick(book)}
-              >
-                <img
-                  src={book.coverImage}
-                  alt={book.title}
-                  className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
-                  style={{
-                    boxShadow: "-4px 11px 7px 1px rgba(0,0,0,0.75)",
-                  }}
-                />
-                <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">
-                  {book.title}
-                </p>
-              </div>
-            ))}
-        </div>
+        {bookmarks
+          .map((book) => ({ ...book, id: book.id.toString() }))
+          .filter(
+            (book: { shelve?: string }) =>
+              book.shelve !== undefined && book.shelve === name
+          )
+          .map((book: { id: string; coverImage: string; title: string }) => (
+            <div
+              key={book.id}
+              className="flex-shrink-0"
+              onClick={() => handleBookClick(book)}
+            >
+              <img
+                src={book.coverImage}
+                alt={book.title}
+                className="w-28 md:w-32 h-36 md:h-48 object-cover rounded shadow"
+                style={{
+                  boxShadow: "-4px 11px 7px 1px rgba(0,0,0,0.75)",
+                }}
+              />
+              <p className="absolute z-10 truncate w-32 text-xs bottom-1 text-center">
+                {book.title}
+              </p>
+            </div>
+          ))}
       </div>
     </div>
+    // </div>
   );
 }

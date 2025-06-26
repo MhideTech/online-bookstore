@@ -3,18 +3,11 @@ import FullShelve from "../ui/FullShelve";
 import BookShelve from "../ui/BookShelve";
 import SearchBook from "../ui/Search";
 import { useBookmark } from "../contexts/BookmarkContext";
-
-interface BookInterface {
-  id: number;
-  title: string;
-  author?: string;
-  coverImage: string;
-  shelve: string;
-}
+import { BookInterface } from "../contexts/BookContext";
 
 export default function BookmarkUI() {
   const [fullShelve, setFullShelve] = useState(false);
-  const [fullShelveBooks, setFullShelveBooks] = useState([]);
+  const [fullShelveBooks, setFullShelveBooks] = useState<BookInterface[]>([]);
   const [fullShelveName, setFullShelveName] = useState("");
 
   const { bookmarks } = useBookmark();
@@ -37,7 +30,6 @@ export default function BookmarkUI() {
 
           <BookShelve
             name="Currently Reading"
-            books={bookmarks}
             setFullShelve={setFullShelve}
             setFullShelveBooks={setFullShelveBooks}
             setFullShelveName={setFullShelveName}
@@ -45,7 +37,6 @@ export default function BookmarkUI() {
 
           <BookShelve
             name="Next Up"
-            books={bookmarks}
             setFullShelve={setFullShelve}
             setFullShelveBooks={setFullShelveBooks}
             setFullShelveName={setFullShelveName}
