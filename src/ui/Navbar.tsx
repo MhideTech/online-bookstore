@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="flex justify-between items-center px-8 py-6 bg-primary border-b-2 border-bg-secondary text-accent z-50">
       <div className="flex gap-4 items-center">
         <div className="border-r-2 pe-6">
-          <h1 className="text-4xl">Logo</h1>
+          <h1 className="text-4xl">Bookie</h1>
         </div>
 
         <ul className="flex gap-4">

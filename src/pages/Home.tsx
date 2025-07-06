@@ -1,4 +1,3 @@
-import CardCarousel from "../ui/Card";
 import Navbar from "../ui/Navbar";
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
   };
   return (
     <div>
-      <CardCarousel />
       <section className="h-screen bg-amber-200 overflow-y-hidden">
         <Navbar />
 
@@ -45,7 +43,7 @@ export default function Home() {
             </div>
 
             <div
-              className="w-24 bg-orange-300 h-[700px] relative flex flex-col items-center py-5 rotate-[10deg] top-5 right-10"
+              className="w-24 bg-orange-300 h-[700px] relative flex flex-col items-center py-5 rotate-[11deg] top-5 right-10"
               style={{
                 boxShadow: "8px 10px 0px 1px rgb(0, 0, 0)",
               }}

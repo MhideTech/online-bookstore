@@ -1,7 +1,19 @@
 import { Search } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
-export default function SearchBook({ books }) {
+type Book = {
+  id: string | number;
+  title: string;
+  subtitle?: string;
+  publisher?: string;
+  coverImage: string;
+};
+
+interface SearchBookProps {
+  books: Book[];
+}
+
+export default function SearchBook({ books }: SearchBookProps) {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [search, setSearch] = useState("");
