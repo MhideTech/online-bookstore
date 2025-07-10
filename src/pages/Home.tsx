@@ -1,14 +1,18 @@
+import BrowseCategories from "../ui/BrowseCategories";
+import FeaturedBooks from "../ui/FeaturedBooks";
+import Footer from "../ui/Footer";
 import Navbar from "../ui/Navbar";
+import WhyChooseUs from "../ui/WhyChooseUs";
 
 export default function Home() {
-  const icons = {
-    children: "👶",
-    history: "📚",
-    fiction: "🤖",
-    thriller: "👻",
-    romance: "❤️",
-    comics: "💥",
-  };
+  // const icons = {
+  //   children: "👶",
+  //   history: "📚",
+  //   fiction: "🤖",
+  //   thriller: "👻",
+  //   romance: "❤️",
+  //   comics: "💥",
+  // };
   return (
     <div>
       <section className="h-screen bg-amber-200 overflow-y-hidden">
@@ -69,7 +73,12 @@ export default function Home() {
         </section>
       </section>
 
-      <div className="w-10/12 mx-auto bg-accent py-16 px-12">
+      <FeaturedBooks />
+      <BrowseCategories />
+      <WhyChooseUs />
+      <Footer />
+
+      {/* <div className="w-10/12 mx-auto bg-accent py-16 px-12">
         <div className="flex justify-between gap-20 my-10">
           <h1 className="shrink-0 text-3xl">
             About <br />
@@ -149,7 +158,7 @@ export default function Home() {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

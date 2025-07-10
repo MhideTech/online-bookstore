@@ -3,6 +3,8 @@
 @import "./theme.css";
 @tailwind utilities;
 
+
+
 * {
   font-family: "Faculty Glyphic", "serif";
 }
